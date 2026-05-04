@@ -9,7 +9,7 @@ public class BinarySearch {
         int leftIdx = 0;
         int rightIdx = elements.length - 1;
 
-        while (rightIdx - leftIdx > 1) {  // TODO: determine this condition (hint: see slides 61-63)
+        while (leftIdx <= rightIdx) {
             loopCounter++; // for testing
             System.out.print(loopCounter + " "); // for testing
             int middleIdx = (rightIdx - leftIdx) / 2 + leftIdx;
