@@ -49,12 +49,16 @@ public class SpellChecker {
 
     // private helper method, called in the constructor, which loads the words
     // from the dictionary.txt text file into the "dictionary" instance variable!
-    private void importDictionary() {
+    private void importDictionary()
+    {
         try {
             File myFile = new File("src/dictionary.txt");
             Scanner fileScanner = new Scanner(myFile);
 
-            /* TODO: FINISH ME */
+            while (fileScanner.hasNext())
+            {
+                dictionary.add(fileScanner.toString());
+            }
 
             System.out.println("\ndictionary.txt file imported successfully!");
         } catch (IOException e) {
