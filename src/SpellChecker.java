@@ -6,8 +6,10 @@ import java.util.Scanner;
 public class SpellChecker {
     private ArrayList<String> dictionary;
 
-    public SpellChecker() {
+    public SpellChecker()
+    {
         dictionary = new ArrayList<>();
+        importDictionary();
     }
 
     public ArrayList<String> getDictionary() {
@@ -42,7 +44,24 @@ public class SpellChecker {
     public boolean binarySpellCheck(String word) {
         int loopCounter = 0; // for testing
 
-        /* TODO: IMPLEMENT ME */
+        int leftIdx = 0;
+        int rightIdx = dictionary.size() - 1;
+
+        while (leftIdx <= rightIdx) {
+            loopCounter++; // for testing
+            System.out.print(loopCounter + " "); // for testing
+            int middleIdx = (rightIdx - leftIdx) / 2 + leftIdx;
+            if (dictionary[middleIdx] > word)
+            {
+                rightIdx = middleIdx - 1;
+            }
+            else if (dictionary[middleIdx] < word)
+            {
+                leftIdx = middleIdx + 1;
+            }
+            else return middleIdx;
+        }
+        return -1;
 
         return false;
     }
@@ -57,7 +76,7 @@ public class SpellChecker {
 
             while (fileScanner.hasNext())
             {
-                dictionary.add(fileScanner.toString());
+                dictionary.add(fileScanner.next());
             }
 
             System.out.println("\ndictionary.txt file imported successfully!");
