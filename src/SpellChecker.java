@@ -49,20 +49,22 @@ public class SpellChecker {
 
         while (leftIdx <= rightIdx) {
             loopCounter++; // for testing
-            System.out.print(loopCounter + " "); // for testing
             int middleIdx = (rightIdx - leftIdx) / 2 + leftIdx;
-            if (dictionary[middleIdx] > word)
+            if (dictionary.get(middleIdx).compareTo(word) > 0)
             {
                 rightIdx = middleIdx - 1;
             }
-            else if (dictionary[middleIdx] < word)
+            else if (dictionary.get(middleIdx).compareTo(word) < 0)
             {
                 leftIdx = middleIdx + 1;
             }
-            else return middleIdx;
+            else
+            {
+                System.out.println("-- BINARY SEARCH: Number of words checked (loop iterations): " + loopCounter);
+                return true;
+            }
         }
-        return -1;
-
+        System.out.println("-- BINARY SEARCH: Number of words checked (loop iterations): " + loopCounter);
         return false;
     }
 
